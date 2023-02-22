@@ -8,7 +8,9 @@ Convert one excel file to another excel file based on template
 excelcov template.json Book1.xlsx Book2.xlsx
 ~~~
 template.json // the template file
+
 Book1.xlsx    // the source excel file
+
 Book2.xlsx    // the target excel file, will automatically create
 
 ## Template
