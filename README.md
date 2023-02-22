@@ -5,7 +5,7 @@ Convert one excel file to another excel file based on template
 ## How to use
 
 ~~~
-excelcov template.json Book1.xlsx Book2.xls
+excelcov template.json Book1.xlsx Book2.xlsx
 ~~~
 
 ## Template
@@ -95,7 +95,7 @@ excelcov template.json Book1.xlsx Book2.xls
               "name": "B3"
             },
             {
-              "name": "C3"  // combine multple cells value to one target cell
+              "name": "C3"  //combine multiple cell values into one target cell
             }
           ]
         }
@@ -115,7 +115,7 @@ excelcov template.json Book1.xlsx Book2.xls
               "name": "A3"
             },
             {
-              "value": "-"  // direat value
+              "value": "-"  // direct value
             },
             {
               "name": "A3", // will be ignore
@@ -130,7 +130,7 @@ excelcov template.json Book1.xlsx Book2.xls
           },
           "from": [
             {
-              "name": "$B3" // fix cell, will not increase the row number
+              "name": "$B3" // start with $, fixed cell, will not increase the row number in repeat
             },
             {
               "value":"----"
