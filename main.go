@@ -3,6 +3,8 @@ package main
 import (
 	"log"
 	"os"
+
+	"github.com/hotjk/excelconv/conv"
 )
 
 func main() {
@@ -11,7 +13,8 @@ func main() {
 		return
 	}
 	template, source, target := os.Args[1], os.Args[2], os.Args[3]
-	domain := New(source, template)
+
+	domain := conv.New(source, template)
 	defer domain.Dispose()
 	domain.Convert()
 	domain.Save(target)

@@ -3,11 +3,11 @@ package conv
 import "strconv"
 
 type position struct {
-	Name   string `json:"name"`
-	Row    int    `json:"row"`
-	Column int    `json:"column"`
-	Fix    bool   `json:"fix"`
-	Value  string `json:"value"`
+	Name  string `json:"name"`
+	row   int
+	col   int
+	fix   bool
+	Value string `json:"value"`
 }
 
 type cell struct {
@@ -27,8 +27,8 @@ type loop struct {
 }
 
 type sheet struct {
-	From      string `json:"from"`
-	To        string `json:"to"`
+	From      string
+	To        string
 	FromIndex int    `json:"fromIndex"`
 	ToIndex   int    `json:"toIndex"`
 	Links     []link `json:"links"`
@@ -37,13 +37,13 @@ type sheet struct {
 
 func (p *position) setName() {
 	if p.Name == "" {
-		p.Name = Index2Name(p.Column) + strconv.Itoa(p.Row)
+		p.Name = Index2Name(p.col) + strconv.Itoa(p.row)
 	} else {
 		if p.Name[0] == '$' {
-			p.Fix = true
+			p.fix = true
 			p.Name = p.Name[1:]
 		}
-		p.Column, p.Row, _ = NameSplit(p.Name)
+		p.col, p.row, _ = NameSplit(p.Name)
 	}
 }
 

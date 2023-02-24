@@ -54,7 +54,7 @@ func (d Domain) Convert() {
 	for _, loop := range d.template.Loops {
 		step := 0
 		for {
-			name := Index2Name(loop.Stop.Column) + strconv.Itoa(loop.Stop.Row+step)
+			name := Index2Name(loop.Stop.col) + strconv.Itoa(loop.Stop.row+step)
 			//fmt.Println(loop.Stop.Column, Index2Name(loop.Stop.Column), strconv.Itoa(loop.Stop.Row+step))
 			if v, _ := d.source.GetCellValue(d.template.From, name); v == "" {
 				break
@@ -65,17 +65,17 @@ func (d Domain) Convert() {
 				for _, from := range link.From {
 					if from.Value != "" {
 						v = from.Value
-					} else if from.Fix {
+					} else if from.fix {
 						v, _ = d.source.GetCellValue(d.template.From, from.Name)
 					} else {
-						name := Index2Name(from.Column) + strconv.Itoa(from.Row+step)
+						name := Index2Name(from.col) + strconv.Itoa(from.row+step)
 						v, _ = d.source.GetCellValue(d.template.From, name)
 					}
 					v = Invoke(v, from.Func, from.Params)
 					//fmt.Println(v, from.Func, from.Params)
 					value = value + v
 				}
-				name := Index2Name(link.To.Column) + strconv.Itoa(link.To.Row+step)
+				name := Index2Name(link.To.col) + strconv.Itoa(link.To.row+step)
 				//fmt.Println(name, value)
 				value = Invoke(value, link.To.Func, link.To.Params)
 				d.target.SetCellValue(d.template.To, name, value)

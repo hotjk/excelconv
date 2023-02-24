@@ -4,8 +4,7 @@
   "links": [
     {
       "to": {
-        "row": 3,
-        "column": 7
+        "name": "G3"
       },
       "from": [
         {
